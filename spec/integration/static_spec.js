@@ -20,6 +20,7 @@ describe("routes : static", () => {
 
 
   describe("GET /marco", () =>{
+    let base = "http://localhost:3000/marco"
     it("should return the string polo", (done) =>{
 
       request.get(base,(err,res,body) =>{
