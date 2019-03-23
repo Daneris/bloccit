@@ -1,7 +1,11 @@
 const app = require("./app");
 const http = require("http");
 
+<<<<<<< HEAD
 console.log(app);
+=======
+console.log(app, "logging app")
+>>>>>>> checkpoint-2981-deploying-to-prod
 const port = normalizePort(process.env.PORT || 3000);
 app.set("port", port);
 
