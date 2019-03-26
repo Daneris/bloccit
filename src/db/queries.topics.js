@@ -1,6 +1,6 @@
 const Topic = require("./models").Topic;
 
-module.exports ={
+module.exports = {
   getAllTopics(callback){
     return Topic.all()
 

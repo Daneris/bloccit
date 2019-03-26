@@ -9,11 +9,13 @@ module.exports = (sequelize, DataTypes) => {
     Topic.hasMany(models.Banner, {
       foreignKey: "topicId",
       as: "banners",
-    })
+    });
   };
+  Topic.associate = function(models){
     Topic.hasMany(models.Rule, {
       foreignKey: "topicId",
       as: "rules",
-    })
+    });
+  };
   return Topic;
 };

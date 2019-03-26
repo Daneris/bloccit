@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Rule.associate = function(models) {
-    rule.belongsTo(models.Topic, {
+    Rule.belongsTo(models.Topic, {
       foreignKey: "topicId",
       onDelete: "CASCADE",
 
