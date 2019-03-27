@@ -11,5 +11,13 @@ module.exports = (sequelize, DataTypes) => {
       as: "banners",
     })
   };
+
+  Topic.associate = function(models) {
+    // associations can be defined here
+    Topic.hasMany(models.Rule, {
+      foreignKey: "topicId",
+      as: "rules",
+    })
+  };
   return Topic;
 };
