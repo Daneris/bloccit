@@ -58,7 +58,7 @@ module.exports ={
         .then(() => {
           callback(null, topic);
         })
-        .catach((err) => {
+        .catch((err) => {
           callback(err);
         });
       });
