@@ -63,7 +63,7 @@ describe("routes : topics", () => {
       request.post(options,
 
         (err,res,body) =>{
-          Topic.findOne({where: {title: "blink-182"}})
+          Topic.findOne({where: {title: "blink-182 songs"}})
           .then((topic) =>{
             expect(res.statusCode).toBe(303);
             expect(topic.title).toBe("blink-182 songs");
@@ -92,24 +92,39 @@ describe("routes : topics", () => {
 
 
   describe("POST /topics/:id/destroy", () => {
-    it("should delete the topic with the associated ID", (done) => {
 
-      Topic.all()
+      it("should delete the topic with the associated ID", (done) => {
+
+  //#1
+        Topic.all()
         .then((topics) => {
+
+  //#2
           const topicCountBeforeDelete = topics.length;
+
           expect(topicCountBeforeDelete).toBe(1);
 
-          request.post(`${base}${this.topic.id}/destroy`, (err,res,body) => {
-            Topic.all();
-              .then((topics) => {
-                expect(err).toBeNull();
-                expect(topics.length).toBe(topicCountBeforeDelete - 1);
-                done();
-              })
+  //#3
+          request.post(`${base}${this.topic.id}/destroy`, (err, res, body) => {
+            Topic.all()
+            .then((topics) => {
+              expect(err).toBeNull();
+              expect(topics.length).toBe(topicCountBeforeDelete - 1);
+              done();
+            })
+
           });
         });
+
+      });
+
     });
-  });
+
+
+
+
+
+
 
   describe("GET /topics/:id/edit", () => {
     it("should render a view with an edit topic form", (done) => {
@@ -147,9 +162,11 @@ describe("routes : topics", () => {
                expect(topic.title).toBe("JavaScript Frameworks");
                done();
              });
-           });
-       });
 
+           });
+
+       });
+     
      });
 
 

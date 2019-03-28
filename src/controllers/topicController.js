@@ -51,7 +51,7 @@ module.exports = {
   },
 
   edit(req,res,next){
-    topicQueries.getTopic(req.params, (err,topic) =>{
+    topicQueries.getTopic(req.params.id, (err,topic) =>{
       if(err || topic === null){
         res.redirect(404, "/")
       }else{
@@ -61,7 +61,9 @@ module.exports = {
   },
 
   update(req,res,next){
-    topicQueries.updateTopic(req.params,req.body,(err,topic) => {
+    console.log(res)
+    topicQueries.updateTopic(req.params.id,req.body,(err,topic) => {
+      console.log(topic);
       if(err || topic === null){
         res.redirect(404, `/topics/${req.params.id}/edit`);
       }else{
