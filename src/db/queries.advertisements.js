@@ -25,10 +25,8 @@ module.exports = {
     })
   },
 
-  getAllAdvertisement(title,callback){
-    return Advertisement.findOne({
-      where: {title: this.advertisement.title}
-    })
+  getAdvertisement(id,callback){
+    return Advertisement.findById(id)
     .then((advertisement) =>{
 
       callback(null,advertisement);
@@ -38,9 +36,9 @@ module.exports = {
     })
   },
 
-  deleteAdvertisement(title,callback){
+  deleteAdvertisement(id,callback){
     return Advertisement.destroy({
-      where: {title}
+      where: {id}
     })
     .then((advertisement) =>{
       callback(null, advertisement)
@@ -49,6 +47,26 @@ module.exports = {
     .catch((err) =>{
       callback(err);
     })
+  },
+
+
+  updateAdvertisement(id,updatedAdvertisement,callback){
+    return Advertisement.findById(id)
+      .then((advertisement) =>{
+        if(!advertisement){
+          return callback("Advertisement not found");
+        }
+        advertisement.update(updatedAdvertisement, {
+          fields: Object.keys(updatedAdvertisement)
+        })
+          .then(() =>{
+            callback(null, advertisement);
+          })
+          .catch((err) =>{
+            callback(err);
+          });
+
+      });
   }
 
 

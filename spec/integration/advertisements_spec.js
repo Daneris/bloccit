@@ -86,9 +86,9 @@ describe("routes : advertisements", () =>{
 
 
 
-  describe("GET /advertisements/title", () =>{
+  describe("GET /advertisements/:id", () =>{
     it("should render a view with the selected topic", (done) =>{
-      request.get(`${base}${this.advertisement.title}`, (err,res,body) =>{
+      request.get(`${base}${this.advertisement.id}`, (err,res,body) =>{
         expect(err).toBeNull();
         expect(body).toContain("Book ad");
         done();
@@ -98,8 +98,8 @@ describe("routes : advertisements", () =>{
 
 
 
-  describe("POST /advertisements/title/destroy", () =>{
-    it("should delete the ad with the associated title", (done) =>{
+  describe("POST /advertisements/:id/destroy", () =>{
+    it("should delete the ad with the associated id", (done) =>{
 
       Advertisement.all()
         .then((advertisements) =>{
@@ -108,7 +108,7 @@ describe("routes : advertisements", () =>{
 
           expect(advertisementCountBeforeDelete).toBe(1);
 
-          request.post(`${base}${this.advertisement.title}/destroy`, (err,req,body)=>{
+          request.post(`${base}${this.advertisement.id}/destroy`, (err,req,body)=>{
             Advertisement.all()
             .then((advertisements) =>{
               expect(err).toBeNull();
@@ -120,6 +120,46 @@ describe("routes : advertisements", () =>{
     });
   });
 
+
+
+
+  describe("GET /advertisements/:id/edit", () =>{
+    it("should render a view with an edit advertisement form", (done) =>{
+      request.get(`${base}${this.advertisement.id}/edit`, (err,res,body) =>{
+        expect(err).toBeNull();
+        expect(body).toContain("Edit Advertisement");
+        expect(body).toContain("Book ad");
+        done();
+
+      });
+    });
+  });
+
+
+describe("POST /advertisements/:id/update", () =>{
+  it("should update the advertisement with the given values", (done) =>{
+    const options = {
+      url: `${base}${this.advertisement.id}/update`,
+      form: {
+        title: "Advertisements",
+        description: "Book ad"
+      }
+    };
+    request.post(options,
+      (err,res, body) =>{
+
+        expect(err).toBeNull();
+
+        Advertisement.findOne({
+          where: {id: this.advertisement.id}
+        })
+        .then((advertisement) =>{
+          expect(advertisement.title).toBe("Advertisements");
+          done();
+        });
+      });
+  });
+});
 
 
 
