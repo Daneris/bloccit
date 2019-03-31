@@ -17,16 +17,39 @@ module.exports = {
       title: newAdvertisement.title,
       description: newAdvertisement.description
     })
+    .then((advertisement) => {
+      callback(null,advertisement);
+    })
+    .catch((err) => {
+      callback(err);
+    })
+  },
+
+  getAllAdvertisement(title,callback){
+    return Advertisement.findOne({
+      where: {title: this.advertisement.title}
+    })
     .then((advertisement) =>{
+
       callback(null,advertisement);
     })
     .catch((err) =>{
       callback(err);
     })
+  },
+
+  deleteAdvertisement(title,callback){
+    return Advertisement.destroy({
+      where: {title}
+    })
+    .then((advertisement) =>{
+      callback(null, advertisement)
+
+    })
+    .catch((err) =>{
+      callback(err);
+    })
   }
-
-
-
 
 
 }

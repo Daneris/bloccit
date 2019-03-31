@@ -84,4 +84,43 @@ describe("routes : advertisements", () =>{
   });
 
 
+
+
+  describe("GET /advertisements/title", () =>{
+    it("should render a view with the selected topic", (done) =>{
+      request.get(`${base}${this.advertisement.title}`, (err,res,body) =>{
+        expect(err).toBeNull();
+        expect(body).toContain("Book ad");
+        done();
+      });
+    });
+  });
+
+
+
+  describe("POST /advertisements/title/destroy", () =>{
+    it("should delete the ad with the associated title", (done) =>{
+
+      Advertisement.all()
+        .then((advertisements) =>{
+
+          const advertisementCountBeforeDelete = advertisements.length;
+
+          expect(advertisementCountBeforeDelete).toBe(1);
+
+          request.post(`${base}${this.advertisement.title}/destroy`, (err,req,body)=>{
+            Advertisement.all()
+            .then((advertisements) =>{
+              expect(err).toBeNull();
+              expect(advertisements.length).toBe(advertisementCountBeforeDelete - 1);
+              done();
+            })
+          });
+        });
+    });
+  });
+
+
+
+
 })
