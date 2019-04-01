@@ -25,11 +25,14 @@ module.exports = (sequelize, DataTypes) => {
       as: "rules",
     })
   };
+  Topic.associate = function(models) {
 
 
-  Topic.hasMany(models.Post, {
-    foreignKey: "topicId",
-    as: "posts"
-  });
+       Topic.hasMany(models.Post, {
+         foreignKey: "topicId",
+         as: "posts"
+       });
+     };
+
   return Topic;
 };
