@@ -34,15 +34,5 @@ module.exports = (sequelize, DataTypes) => {
        });
      };
 
-    Topic.associate = function(models){
-
-      Topic.belongsToMany(models.Flair, {
-
-        foreignKey: "topicId",
-        as: "flairs"
-
-      })
-    }
-
   return Topic;
 };
