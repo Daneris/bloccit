@@ -19,8 +19,10 @@ module.exports = {
     let newFlair ={
       name: req.body.name,
       color: req.body.color,
-      postId: req.params.postId
+      postId: req.params.postId,
+
     };
+
     flairQueries.addFlair(newFlair, (err,flair) =>{
       if(err){
         res.redirect(500, "/flairs/new");

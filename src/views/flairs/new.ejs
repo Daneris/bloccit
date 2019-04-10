@@ -10,7 +10,8 @@
 
       <h1>New Flair</h1>
 
-      <form action="/flairs/create" method="post">
+      
+        <form action="/posts/<%= postId %>/flairs/create" method="post">
         <div class="form-group">
           <label for="name">Flair name</label>
           <input type="text" class="form-control" name="name" aria-describedby="nameHelp" placeholder="Enter Name">
