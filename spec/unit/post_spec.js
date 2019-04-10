@@ -87,7 +87,7 @@ describe("Post", () =>{
         })
         .then((newTopic) =>{
           expect(this.post.topicId).toBe(this.topic.id);
-
+          
           this.post.setTopic(newTopic)
             .then((post) =>{
               expect(post.topicId).toBe(newTopic.id);

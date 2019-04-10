@@ -21,14 +21,14 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "topicId",
       onDelete: "CASCADE"
     });
-  };
-
-  Post.associate = function(models){
 
     Post.hasMany(models.Flair, {
       foreignKey: "postId",
       as: "flairs",
     })
-  }
+
+  };
+
+
   return Post;
 };

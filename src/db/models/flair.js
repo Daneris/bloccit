@@ -1,8 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Flair = sequelize.define('Flair', {
-    name: DataTypes.STRING,
-    color: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    color: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {});
 
   Flair.associate = function(models) {
