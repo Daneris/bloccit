@@ -26,21 +26,14 @@ module.exports = {
 
   },
 
-
   getFlair(id,callback){
-    return Flair.findById(id, {
-
-      include: [{
-        model: Post,
-        as: "posts"
-      }]
-    })
+    return Flair.findById(id)
       .then((flair) =>{
         callback(null, flair);
       })
       .catch((err) =>{
         callback(err);
-      })
+      });
   },
 
   deleteFlair(id, callback){

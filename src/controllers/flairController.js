@@ -24,6 +24,7 @@ module.exports = {
     };
 
     flairQueries.addFlair(newFlair, (err,flair) =>{
+      console.log(flair)
       if(err){
         res.redirect(500, "/flairs/new");
       }else{
@@ -43,6 +44,7 @@ module.exports = {
 
     });
   },
+
 
   destroy(req,res,next){
     flairQueries.deleteFlair(req.params.id, (err,flair) =>{
