@@ -11,16 +11,25 @@
         <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
         <a href="/flairs/<%= post.flairId %>/posts/<%= post.id %>/edit" class="btn btn-warning">Edit Flair</a>
         <a href="/posts/<%= post.id %>/flairs/new" class="btn btn-success">New Flair</a>
-        
+
           <form style="display:initial" action="/topics/<%= post.topicId %>/posts/<%= post.id %>/destroy" method="post">
             <button type="submit" class="btn btn-danger">Delete</button>
           </form>
 
-
+          <% post.flairs.forEach((flair) => { %>
+                   <li class="list-group-item">
+                     <a href="/posts/<%= post.id %>/flairs/<%= flair.id %>"> <%= flair.name %> </a>
+                   </li>
+                   <% }) %>
       <p><%= post.body %></p>
 
 
+
     </main>
+
+
+
+
 
     <% include ../static/partials/baseScripts.ejs %>
 
