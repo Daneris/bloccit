@@ -39,7 +39,7 @@ module.exports = {
       if(err || flair === null){
         res.redirect(404, "/")
       }else{
-        res.render("flairs/show", {flair});
+        res.render("flairs/show", {flair, topicId: req.params.topicId, postId: req.params.postId});
       }
 
     });
@@ -51,7 +51,9 @@ module.exports = {
       if(err){
         res.redirect(500, `/flairs/${flair.id}`)
       }else{
-        res.redirect(303, "/flairs")
+        res.redirect(303, `/topics/${req.params.topicId}/posts/${req.params.postId}`)
+
+
       }
     });
   },
@@ -59,9 +61,11 @@ module.exports = {
     flairQueries.getFlair(req.params.id, (err, flair) =>{
 
       if(err || flair === null){
+
         res.redirect(404, "/")
       }else{
-        res.render("flairs/edit", {flair})
+        res.render("flairs/edit", {flair, topicId: req.params.topicId, postId: req.params.postId})
+
       }
     });
   }

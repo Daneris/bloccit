@@ -1,5 +1,6 @@
 const Flair = require("./models").Flair;
 const Post = require("./models").Post;
+const Topic = require("./models").Topic;
 
 module.exports = {
 
@@ -27,13 +28,19 @@ module.exports = {
   },
 
   getFlair(id,callback){
-    return Flair.findById(id)
+    return Flair.findById(id, {
+      include: [{
+        model: Post,
+        as: "posts"
+      }]
+    })
       .then((flair) =>{
         callback(null, flair);
       })
       .catch((err) =>{
         callback(err);
       });
+
   },
 
   deleteFlair(id, callback){

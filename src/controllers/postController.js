@@ -24,6 +24,7 @@ module.exports = {
   show(req,res,next){
     postQueries.getPost(req.params.id, (err,post) =>{
       if(err|| post === null){
+        console.log(err);
         res.redirect(404, "/");
       }else{
         res.render("posts/show", {post});
@@ -57,9 +58,10 @@ module.exports = {
   update(req,res,next){
     postQueries.updatePost(req.params.id,req.body,(err,post) => {
       if(err || post == null){
+        console.log(err)
         res.redirect(404, `/topics/${req.params.topicId}/posts/${req.params.id}/edit`)
       }else{
-        res.redirect(`/topics/${req.params.topicId}/posts/$req.params.id`);
+        res.redirect(`/topics/${req.params.topicId}/posts/${req.params.id}`);
       }
     });
   }
