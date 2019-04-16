@@ -59,6 +59,7 @@ module.exports = {
   },
   edit(req,res,next){
     flairQueries.getFlair(req.params.id, (err, flair) =>{
+      console.log(err)
 
       if(err || flair === null){
 
