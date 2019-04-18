@@ -27,8 +27,10 @@ module.exports ={
   },
 
   getTopic(id,callback){
-
-    return Topic.findById(id, {
+    return Topic.findOne({
+      where: {
+        id: id
+      },
       include: [{
         model: Post,
         as: "posts"

@@ -15,9 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   Flair.associate = function(models) {
     // associations can be defined here
 
-    Flair.hasMany(models.Post, {
+    Flair.belongsToMany(models.Post, {
       foreignKey: "postId",
       as: "posts",
+      through: "FlairPost"
     });
   };
 

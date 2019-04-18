@@ -22,10 +22,11 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "CASCADE"
     });
 
-    Post.hasMany(models.Flair, {
+    Post.belongsToMany(models.Flair, {
       foreignKey: "flairId",
       as: "flairs",
-  
+      through: "FlairPost"
+
 
     })
 
