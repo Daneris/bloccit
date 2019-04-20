@@ -15,10 +15,12 @@ module.exports = {
       email: newUser.email,
       password: hashedPassword
     })
+
     .then((user) => {
       callback(null, user);
     })
     .catch((err) => {
+      console.log(err)
       callback(err);
     })
   }
