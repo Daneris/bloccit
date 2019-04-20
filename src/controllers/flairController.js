@@ -12,7 +12,7 @@ module.exports = {
     });
   },
   new(req,res, next){
-    res.render("flairs/new", {postId: req.params.postId});
+    res.render("flairs/new", {topicId: req.params.topicId, postId: req.params.postId, id: req.params.id});
   },
 
   create(req,res,next){
@@ -20,18 +20,20 @@ module.exports = {
       name: req.body.name,
       color: req.body.color,
       postId: req.params.postId,
+      id: req.params.id,
+      topicId: req.params.topicId
 
     };
 
     flairQueries.addFlair(newFlair, (err,flair) =>{
-      console.log(flair)
+
       if(err){
         res.redirect(500, "/flairs/new");
+        console.log(err, "error");
       }else{
-        res.redirect(303, `/posts/${newFlair.postId}/flairs/${flair.id}`);
+        res.redirect(303, `${newFlair.postId}`);
       }
     });
-
 
   },
   show(req,res,next){
@@ -70,8 +72,6 @@ module.exports = {
       }
     });
   }
-
-
 
 
 

@@ -4,8 +4,10 @@ const router = express.Router();
 
 
 router.get("/flairs", flairController.index);
-router.get("/posts/:postId/flairs/new", flairController.new);
-router.post("/posts/:postId/flairs/create", flairController.create);
+router.get("/topics/:topicId/posts/:postId/flairs/new", flairController.new);
+router.post("/topics/:topicId/posts/:postId/flairs/create", flairController.create);
+
+
 
 router.get("/topics/:topicId/posts/:postId/flairs/:id", flairController.show);
 
