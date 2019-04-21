@@ -9,16 +9,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       email: {
-<<<<<<< HEAD
 
-=======
-        type: Sequelize.STRING,
->>>>>>> checkpoint-2999-authentication
         allowNull: false,
         unique: true,
+
         validate: {
           isEmail: { msg: "must be a valid email" }
-        }
+
+      },
+          type: Sequelize.STRING
       },
       password: {
         type: Sequelize.STRING,

@@ -38,6 +38,7 @@ module.exports = {
        };
        topicQueries.addTopic(newTopic, (err, topic) => {
          if(err){
+           console.log(err);
            res.redirect(500, "topics/new");
          } else {
            res.redirect(303, `/topics/${topic.id}`);
@@ -100,8 +101,9 @@ destroy(req, res, next){
      update(req, res, next){
 
       // #1
-          topicQueries.updateTopic(req, req.body, (err, topic) => {
+          topicQueries.updateTopic(req,req.body, (err, topic) => {
             if(err || topic == null){
+
               res.redirect(401, `/topics/${req.params.id}/edit`);
             } else {
               res.redirect(`/topics/${req.params.id}`);
