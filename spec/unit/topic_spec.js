@@ -95,8 +95,8 @@ describe("#create()", () =>{
     it("should return the associated post", (done) =>{
       this.topic.getPosts()
         .then((associatedPosts) =>{
-          expect(associatedPosts[0].title).toBe("cleaning the bathroom");
-          expect(associatedPosts[0].body).toBe("use bleach");
+          expect(associatedPosts[0].title).toBe("My first visit to Proxima Centauri b");
+          expect(associatedPosts[0].body).toBe("I saw some rocks.");
           done();
         });
     });
