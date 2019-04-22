@@ -1,0 +1,118 @@
+Failures:
+1) routes : topics admin user performing CRUD actions for Topic GET /topics/new should render a view with a new topic form
+  Message:
+    Expected '<!DOCTYPE html>
+    <html>
+      <head>
+            <meta charset="utf-8" />
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+         <title>Bloccit</title>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+         <link rel="stylesheet" href="/css/application.css">
+    
+      </head>
+      <body>
+        <main class="container">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">Bloccit</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/topics">Topics</a>
+          ... to contain 'New Topic'.
+  Stack:
+        at <Jasmine>
+        at Request.request.get [as _callback] (/Users/daneriscruz/bloc/bloccit/spec/integration/topics_spec.js:59:24)
+        at Request.self.callback (/Users/daneriscruz/bloc/bloccit/node_modules/request/request.js:186:22)
+        at Request.emit (events.js:182:13)
+        at Request.<anonymous> (/Users/daneriscruz/bloc/bloccit/node_modules/request/request.js:1163:10)
+        at Request.emit (events.js:182:13)
+        at IncomingMessage.<anonymous> (/Users/daneriscruz/bloc/bloccit/node_modules/request/request.js:1085:12)
+        at Object.onceWrapper (events.js:273:13)
+        at IncomingMessage.emit (events.js:187:15)
+        at endReadableNT (_stream_readable.js:1094:12)
+        at process._tickCallback (internal/process/next_tick.js:63:19)
+
+2) routes : topics admin user performing CRUD actions for Topic POST /topics/:id/destroy should delete the topic with the associated ID
+  Message:
+    Expected 1 to be 0.
+  Stack:
+    Error: Expected 1 to be 0.
+        at <Jasmine>
+        at Topic.all.then (/Users/daneriscruz/bloc/bloccit/spec/integration/topics_spec.js:119:37)
+        at tryCatcher (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/promise.js:512:31)
+        at Promise._settlePromise (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/promise.js:569:18)
+        at Promise._settlePromise0 (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/promise.js:614:10)
+        at Promise._settlePromises (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/promise.js:694:18)
+        at _drainQueueStep (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/async.js:138:12)
+        at _drainQueue (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/async.js:147:5)
+        at Immediate.Async.drainQueues [as _onImmediate] (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/async.js:17:14)
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+3) routes : topics admin user performing CRUD actions for Topic GET /topics/:id/edit should render a view with an edit topic form
+  Message:
+    Expected '<!DOCTYPE html>
+    <html>
+      <head>
+            <meta charset="utf-8" />
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+         <title>Bloccit</title>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+         <link rel="stylesheet" href="/css/application.css">
+    
+      </head>
+      <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">Bloccit</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/topics">Topics</a>
+            </li>
+            <li class="nav ... to contain 'Edit Topic'.
+  Stack:
+        at <Jasmine>
+        at Request.request.get [as _callback] (/Users/daneriscruz/bloc/bloccit/spec/integration/topics_spec.js:135:24)
+        at Request.self.callback (/Users/daneriscruz/bloc/bloccit/node_modules/request/request.js:186:22)
+        at Request.emit (events.js:182:13)
+        at Request.<anonymous> (/Users/daneriscruz/bloc/bloccit/node_modules/request/request.js:1163:10)
+        at Request.emit (events.js:182:13)
+        at IncomingMessage.<anonymous> (/Users/daneriscruz/bloc/bloccit/node_modules/request/request.js:1085:12)
+        at Object.onceWrapper (events.js:273:13)
+        at IncomingMessage.emit (events.js:187:15)
+        at endReadableNT (_stream_readable.js:1094:12)
+        at process._tickCallback (internal/process/next_tick.js:63:19)
+
+4) routes : topics admin user performing CRUD actions for Topic POST /topics/:id/update should update the topic with the given values
+  Message:
+    Expected 'JS Frameworks' to be 'JavaScript Frameworks'.
+  Stack:
+    Error: Expected 'JS Frameworks' to be 'JavaScript Frameworks'.
+        at <Jasmine>
+        at Topic.findOne.then (/Users/daneriscruz/bloc/bloccit/spec/integration/topics_spec.js:158:33)
+        at tryCatcher (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/promise.js:512:31)
+        at Promise._settlePromise (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/promise.js:569:18)
+        at Promise._settlePromise0 (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/promise.js:614:10)
+        at Promise._settlePromises (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/promise.js:694:18)
+        at _drainQueueStep (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/async.js:138:12)
+        at _drainQueue (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/async.js:147:5)
+        at Immediate.Async.drainQueues [as _onImmediate] (/Users/daneriscruz/bloc/bloccit/node_modules/bluebird/js/release/async.js:17:14)
+        at runCallback (timers.js:705:18)
+        at tryOnImmediate (timers.js:676:5)
+        at processImmediate (timers.js:658:5)
+
+14 specs, 4 failures
