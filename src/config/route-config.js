@@ -5,7 +5,7 @@ module.exports = {
     const postRoutes = require("../routes/posts");
     const advertisementRoutes = require("../routes/advertisements");
     const userRoutes = require("../routes/users");
-
+    const commentRoutes = require("../routes/comments");
 
 
     if(process.env.NODE_ENV === "test") {
@@ -18,5 +18,6 @@ module.exports = {
     app.use(postRoutes);
     app.use(advertisementRoutes);
     app.use(userRoutes);
+    app.use(commentRoutes);
   }
 }
