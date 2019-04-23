@@ -223,7 +223,15 @@ describe("POST /topics/:topicId/posts/:id/destroy", () => {
 
 
 
-
+describe("#getPoints()", () =>{
+     it("should return the associated points", (done) =>{
+       this.post.getPoint()
+         .then((associatedTopic) =>{
+           expect(associatedTopic.title).toBe("Expeditions to Alpha Centauri");
+           done();
+         });
+     });
+   });
 
 
 

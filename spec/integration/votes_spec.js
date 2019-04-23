@@ -188,6 +188,112 @@ describe("routes : votes", () => {
        });
      });
 
+
+
+
+
+     describe("GET /topics/:topicId/posts/:postId/votes/downvote", () => {
+
+       it("should Not create a vote with a value other than -1 or 1", (done) => {
+         const options = {
+           url: `${base}${this.topic.id}/posts/${this.post.id}/votes/downvote`
+         };
+         request.get(options,
+           (err, res, body) => {
+
+             Vote.findOne({
+               where: {
+                 userId: this.user.id,
+                 postId: this.post.id
+               }
+             })
+
+
+              Vote.create({           // create a vote on `this.post`
+                value: -2,
+                postId: this.post.id,
+                userId: this.user.id
+                    })
+              .then((vote) => {
+                this.vote = vote;
+
+               expect(vote).toBeNull();
+               expect(vote.value).toBeNull();
+               expect(err.message).toContain("Validation error: Validation isIn on value failed");
+
+               done();
+             })
+             .catch((err) => {
+               console.log(err);
+               done();
+             });
+           }
+         );
+       });
+     });
+
+
+
+
+
+     describe("GET /topics/:topicId/posts/:postId/votes/downvote", () => {
+
+       it("should not allow the creation of two or more votes on one post by the same person", (done) => {
+         const options = {
+           url: `${base}${this.topic.id}/posts/${this.post.id}/votes/downvote`
+         };
+         request.get(options,
+           (err, res, body) => {
+             Vote.findOne({
+               where: {
+                 userId: this.user.id,
+                 postId: this.post.id
+               }
+             })
+             .then((vote) => {
+
+
+               expect(vote.userId).toBe(this.user.id);
+               expect(vote.postId).toBe(this.post.id);
+               done();
+
+              })
+              .then((vote) => {
+
+                expect(value).toBe(-1)
+                expect(vote.userId).toBe(this.user.id);
+                expect(vote.postId).toBe(this.post.id);
+                done();
+              })
+
+
+             .catch((err) => {
+               console.log(err);
+               done();
+             });
+           }
+         );
+       });
+     });
+
+
+
+
+
+
+     describe("#getPoints()", () =>{
+          it("should return the associated points", (done) =>{
+            this.post.getPoints()
+              .then((associatedPoint) =>{
+                expect(associatedPoint).toBe(1);
+                done();
+              });
+          });
+        });
+
+
+
+
    }); //end context for signed in use
 
 
