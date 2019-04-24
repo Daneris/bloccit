@@ -194,7 +194,7 @@ describe("routes : votes", () => {
 
      describe("GET /topics/:topicId/posts/:postId/votes/downvote", () => {
 
-       it("should Not create a vote with a value other than -1 or 1", (done) => {
+       it("should Not allow creation of a vote with a value other than -1 or 1", (done) => {
          const options = {
            url: `${base}${this.topic.id}/posts/${this.post.id}/votes/downvote`
          };
@@ -280,16 +280,122 @@ describe("routes : votes", () => {
 
 
 
+     describe("#getPoints()", () => {
+             it("testing getPoints function", (done) => {
 
-     describe("#getPoints()", () =>{
-          it("should return the associated points", (done) =>{
-            this.post.getPoints()
-              .then((associatedPoint) =>{
-                expect(associatedPoint).toBe(1);
-                done();
-              });
-          });
-        });
+
+                 Vote.create({
+                     value: 1,
+                     userId: this.user.id,
+                     postId: this.post.id
+                 })
+                 .then((res) => {
+                     Post.findOne({where: {id: this.post.id},
+                         include: [{
+                             model: Vote,
+                             as: "votes"
+                         }]
+                     })
+                     .then((post) => {
+
+                         expect(post.getPoints()).toBe(1);
+                         done();
+                     })
+                     .catch((err) => {
+                         console.log(err);
+                         done();
+                     })
+                 })
+                 .catch((err) => {
+                     console.log(err);
+                     done();
+                 });
+             });
+         });
+
+
+
+
+
+         describe("#hasUpvoteFor()", () => {
+                 it("should return true if user has added an upvote", (done) => {
+
+
+                     Vote.create({
+                         value: 1,
+                         userId: this.user.id,
+                         postId: this.post.id
+                     })
+                     .then((res) => {
+                         Post.findOne({where: {id: this.post.id},
+                             include: [{
+                                 model: Vote,
+                                 as: "votes"
+                             }]
+                         })
+                         .then((post) => {
+                           expect(post.hasUpVoteFor(this.user.id)).toBe(true);
+                           expect(vote.userId).toBe(this.user.id);
+                           expect(vote.postId).toBe(this.post.id);
+                           expect(this.value).toBe(1);
+
+                             done();
+                         })
+                         .catch((err) => {
+                             console.log(err);
+                             done();
+                         })
+                     })
+                     .catch((err) => {
+                         console.log(err);
+                         done();
+                     });
+                 });
+             });
+
+
+
+
+
+
+
+                      describe("#hasDownvoteFor()", () => {
+                              it("should return true if user has added an downvote", (done) => {
+
+
+                                  Vote.create({
+                                      value: -1,
+                                      userId: this.user.id,
+                                      postId: this.post.id
+                                  })
+                                  .then((res) => {
+                                      Post.findOne({where: {id: this.post.id},
+                                          include: [{
+                                              model: Vote,
+                                              as: "votes"
+                                          }]
+                                      })
+                                      .then((post) => {
+                                        expect(post.hasDownVoteFor(this.user.id)).toBe(true);
+                                        expect(this.value).toBe(-1);
+                                        expect(vote.userId).toBe(this.user.id);
+                                        expect(vote.postId).toBe(this.post.id);
+
+                                          done();
+                                      })
+                                      .catch((err) => {
+                                          console.log(err);
+                                          done();
+                                      })
+                                  })
+                                  .catch((err) => {
+                                      console.log(err);
+                                      done();
+                                  });
+                              });
+                          });
+
+
 
 
 
