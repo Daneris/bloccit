@@ -17,5 +17,4 @@ router.post("/topics/:topicId/posts/:postId/flairs/:id/destroy", flairController
 router.get("/topics/:topicId/posts/:postId/flairs/:id/edit", flairController.edit);
 
 
-
 module.exports = router;

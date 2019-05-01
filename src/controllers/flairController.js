@@ -61,10 +61,10 @@ module.exports = {
   },
   edit(req,res,next){
     flairQueries.getFlair(req.params.id, (err, flair) =>{
-      console.log(err)
+
 
       if(err || flair === null){
-
+        console.log(err)
         res.redirect(404, "/")
       }else{
         res.render("flairs/edit", {flair, topicId: req.params.topicId, postId: req.params.postId})
